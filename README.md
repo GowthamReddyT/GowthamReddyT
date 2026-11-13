@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/space-header.svg" alt="Gowtham Reddy — Space-themed profile banner" width="100%" />
+<img src="https://raw.githubusercontent.com/GowthamReddyT/GowthamReddyT/main/assets/space-header.svg" alt="Gowtham Reddy — Space-themed profile banner" width="100%" />
 
 # 👨‍🚀 GOWTHAM REDDY T
 
@@ -41,7 +41,7 @@
 
 ## 👾 Commit Invaders
 
-**My GitHub contribution graph, reimagined as a Space Invaders arcade animation.** The image automatically switches between light and dark variants based on your GitHub theme.
+**My GitHub contribution graph, reimagined as a Space Invaders arcade animation.** The game always uses my black galaxy space theme.
 
 <img alt="Animated Commit Invaders game in a black galaxy space theme" src="https://raw.githubusercontent.com/GowthamReddyT/GowthamReddyT/output/commit-invaders-dark.svg" width="100%">
 
