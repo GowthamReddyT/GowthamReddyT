@@ -2,7 +2,7 @@
 
 <img src="assets/space-header.svg" alt="Gowtham Reddy — Space-themed profile banner" width="100%" />
 
-# 👨‍🚀 GOWTHAM REDDY
+# 👨‍🚀 GOWTHAM REDDY T
 
 ### Cloud • DevOps • Python • Software Engineering
 
