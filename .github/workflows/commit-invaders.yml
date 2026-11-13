@@ -99,7 +99,7 @@ jobs:
 
               # Target the actual full-canvas background, not tiny sprite rectangles.
               pattern = r'(<rect x="0" y="0" width="720" height="171" fill=")[^"]+("[^>]*/>)'
-              svg, count = re.subn(pattern, r'\\g<1>url(#galaxy-bg)\\g<2>' + backdrop, svg, count=1)
+              svg, count = re.subn(pattern, lambda m: m.group(1) + 'url(#galaxy-bg)' + m.group(2) + backdrop, svg, count=1)
               if count != 1:
                   raise SystemExit(f"Could not locate full-canvas game background rectangle in {path}")
 
