@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/GowthamReddyT/GowthamReddyT/main/https://raw.githubusercontent.com/GowthamReddyT/GowthamReddyT/main/assets/space-header.svg?v=2" alt="Gowtham Reddy — Space-themed profile banner" width="100%" />
+<img src="https://raw.githubusercontent.com/GowthamReddyT/GowthamReddyT/main/assets/space-header.svg" alt="Gowtham Reddy — Space-themed profile banner" width="100%" />
 
 # 👨‍🚀 GOWTHAM REDDY T
 
