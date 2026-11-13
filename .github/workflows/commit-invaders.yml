@@ -23,3 +23,92 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           github_user_name: ${{ github.repository_owner }}
+
+      - name: Apply galaxy space theme to both game SVGs
+        shell: bash
+        run: |
+          python - <<'PY'
+          import re, random
+          from pathlib import Path
+
+          random.seed(146721816)
+
+          def decorate(path, dark):
+              p = Path(path)
+              if not p.exists():
+                  raise SystemExit(f"Expected generated file missing: {path}")
+              svg = p.read_text()
+
+              if dark:
+                  bg1, bg2 = "#05091c", "#171044"
+                  stars = "#d9f7ff"
+                  planet1, planet2, ring = "#7b5cff", "#ff65c8", "#65eaff"
+                  replacements = {
+                      "#0d1117": "#080d24", "#1a1a2e": "#111b3d",
+                      "#0e4429": "#173b6b", "#006d32": "#246b91",
+                      "#26a641": "#4b9ec4", "#39d353": "#8ae8ff",
+                      "#4488ff": "#65eaff", "#d29922": "#ff70d6",
+                      "#e6edf3": "#e8eaff", "#8b949e": "#a5a0d6",
+                  }
+              else:
+                  bg1, bg2 = "#f8f5ff", "#e6f4ff"
+                  stars = "#6b55b5"
+                  planet1, planet2, ring = "#9b83ff", "#ed8bd0", "#42a8d8"
+                  replacements = {
+                      "#ffffff": "#f8f5ff", "#ebedf0": "#e7e2ff",
+                      "#9be9a8": "#c9c0ff", "#40c463": "#9d8bea",
+                      "#30a14e": "#657bd8", "#216e39": "#3455a8",
+                      "#cf222e": "#b04cbb", "#bf8700": "#398fc4",
+                      "#0969da": "#5368d8", "#1f2328": "#29234a",
+                      "#656d76": "#756c9e", "#1a7f37": "#5368d8",
+                  }
+
+              for old, new in replacements.items():
+                  svg = svg.replace(old, new)
+
+              defs = f'''
+              <linearGradient id="galaxy-bg" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="{bg1}"/>
+                <stop offset="55%" stop-color="{bg2}"/>
+                <stop offset="100%" stop-color="{bg1}"/>
+              </linearGradient>
+              <radialGradient id="galaxy-planet">
+                <stop offset="0%" stop-color="{planet2}"/>
+                <stop offset="72%" stop-color="{planet1}"/>
+                <stop offset="100%" stop-color="{bg2}"/>
+              </radialGradient>
+              '''
+              svg = svg.replace("</defs>", defs + "</defs>", 1)
+
+              decoration = ['<g id="galaxy-starfield" pointer-events="none">']
+              for _ in range(58):
+                  x = random.randint(4, 716)
+                  y = random.randint(4, 166)
+                  radius = random.choice([0.45, 0.65, 0.85, 1.1])
+                  opacity = round(random.uniform(0.25, 0.85), 2)
+                  decoration.append(f'<circle cx="{x}" cy="{y}" r="{radius}" fill="{stars}" opacity="{opacity}"/>')
+              decoration.append(
+                  f'<circle cx="674" cy="25" r="15" fill="url(#galaxy-planet)" opacity="0.9"/>'
+                  f'<ellipse cx="674" cy="25" rx="23" ry="6" fill="none" stroke="{ring}" '
+                  f'stroke-width="2" opacity="0.65" transform="rotate(-18 674 25)"/>'
+                  f'<circle cx="615" cy="145" r="5" fill="{ring}" opacity="0.7"/>'
+                  f'<circle cx="615" cy="145" r="9" fill="none" stroke="{ring}" stroke-width="0.7" opacity="0.3"/>'
+              )
+              decoration.append('</g>')
+              backdrop = ''.join(decoration)
+
+              pattern = r'(<rect width="[^"]+" height="[^"]+" fill=")[^"]+("\s*/>)'
+              svg, count = re.subn(pattern, r'\g<1>url(#galaxy-bg)\g<2>' + backdrop, svg, count=1)
+              if count != 1:
+                  raise SystemExit(f"Could not locate SVG background rectangle in {path}")
+              p.write_text(svg)
+
+          decorate("commit-invaders-dark.svg", True)
+          decorate("commit-invaders.svg", False)
+          PY
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add commit-invaders.svg commit-invaders-dark.svg
+          git commit -m "style: add animated game galaxy background" || echo "No SVG changes"
+          git push origin output
