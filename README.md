@@ -43,11 +43,7 @@
 
 **My GitHub contribution graph, reimagined as a Space Invaders arcade animation.** The image automatically switches between light and dark variants based on your GitHub theme.
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/GowthamReddyT/GowthamReddyT/output/commit-invaders-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/GowthamReddyT/GowthamReddyT/output/commit-invaders.svg">
-  <img alt="Animated Space Invaders generated from my GitHub contribution graph" src="https://raw.githubusercontent.com/GowthamReddyT/GowthamReddyT/output/commit-invaders.svg" width="100%">
-</picture>
+<img alt="Animated Commit Invaders game in a black galaxy space theme" src="https://raw.githubusercontent.com/GowthamReddyT/GowthamReddyT/output/commit-invaders-dark.svg" width="100%">
 
 ## 🌌 GitHub Stats
 
