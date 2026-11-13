@@ -39,9 +39,9 @@
 
 </div>
 
-## 👾 Commit Invaders
+## 🌌 NEXUS: CODE GALAXY
 
-**My GitHub contribution graph, reimagined as a Space Invaders arcade animation.** The game always uses my black galaxy space theme.
+**Every contribution fuels the universe. Every commit moves the mission forward.**
 
 <img alt="Animated Commit Invaders game in a black galaxy space theme" src="https://raw.githubusercontent.com/GowthamReddyT/GowthamReddyT/output/commit-invaders-dark.svg" width="100%">
 
