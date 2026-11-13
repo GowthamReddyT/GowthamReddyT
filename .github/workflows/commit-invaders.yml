@@ -97,10 +97,15 @@ jobs:
               decoration.append('</g>')
               backdrop = ''.join(decoration)
 
-              pattern = r'(<rect width="[^"]+" height="[^"]+" fill=")[^"]+("\s*/>)'
-              svg, count = re.subn(pattern, r'\g<1>url(#galaxy-bg)\g<2>' + backdrop, svg, count=1)
+              # Target the actual full-canvas background, not tiny sprite rectangles.
+              pattern = r'(<rect x="0" y="0" width="720" height="171" fill=")[^"]+("[^>]*/>)'
+              svg, count = re.subn(pattern, r'\\g<1>url(#galaxy-bg)\\g<2>' + backdrop, svg, count=1)
               if count != 1:
-                  raise SystemExit(f"Could not locate SVG background rectangle in {path}")
+                  raise SystemExit(f"Could not locate full-canvas game background rectangle in {path}")
+
+              # Give the footer the same deep-space treatment.
+              svg = svg.replace('<rect x="0" y="151" width="720" height="20" fill="#f8f5ff" />',
+                                '<rect x="0" y="151" width="720" height="20" fill="#100d30" />')
               p.write_text(svg)
 
           decorate("commit-invaders-dark.svg", True)
