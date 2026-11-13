@@ -51,9 +51,9 @@ jobs:
                       "#e6edf3": "#e8eaff", "#8b949e": "#a5a0d6",
                   }
               else:
-                  bg1, bg2 = "#f8f5ff", "#e6f4ff"
-                  stars = "#6b55b5"
-                  planet1, planet2, ring = "#9b83ff", "#ed8bd0", "#42a8d8"
+                  bg1, bg2 = "#030817", "#24104a"
+                  stars = "#d9f7ff"
+                  planet1, planet2, ring = "#6d5cff", "#ff5fc8", "#55eaff"
                   replacements = {
                       "#ffffff": "#f8f5ff", "#ebedf0": "#e7e2ff",
                       "#9be9a8": "#c9c0ff", "#40c463": "#9d8bea",
@@ -81,15 +81,15 @@ jobs:
               svg = svg.replace("</defs>", defs + "</defs>", 1)
 
               decoration = ['<g id="galaxy-starfield" pointer-events="none">']
-              for _ in range(58):
+              for _ in range(105):
                   x = random.randint(4, 716)
                   y = random.randint(4, 166)
-                  radius = random.choice([0.45, 0.65, 0.85, 1.1])
-                  opacity = round(random.uniform(0.25, 0.85), 2)
+                  radius = random.choice([0.55, 0.8, 1.0, 1.35])
+                  opacity = round(random.uniform(0.45, 1.0), 2)
                   decoration.append(f'<circle cx="{x}" cy="{y}" r="{radius}" fill="{stars}" opacity="{opacity}"/>')
               decoration.append(
-                  f'<circle cx="674" cy="25" r="15" fill="url(#galaxy-planet)" opacity="0.9"/>'
-                  f'<ellipse cx="674" cy="25" rx="23" ry="6" fill="none" stroke="{ring}" '
+                  f'<circle cx="674" cy="25" r="20" fill="url(#galaxy-planet)" opacity="0.9"/>'
+                  f'<ellipse cx="674" cy="25" rx="29" ry="8" fill="none" stroke="{ring}" '
                   f'stroke-width="2" opacity="0.65" transform="rotate(-18 674 25)"/>'
                   f'<circle cx="615" cy="145" r="5" fill="{ring}" opacity="0.7"/>'
                   f'<circle cx="615" cy="145" r="9" fill="none" stroke="{ring}" stroke-width="0.7" opacity="0.3"/>'
