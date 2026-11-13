@@ -45,11 +45,6 @@
 
 <img alt="Animated Commit Invaders game in a black galaxy space theme" src="https://raw.githubusercontent.com/GowthamReddyT/GowthamReddyT/output/commit-invaders-dark.svg" width="100%">
 
-## 🌌 GitHub Stats
-
-
-
----
 
 <div align="center">
 
