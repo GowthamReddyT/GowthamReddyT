@@ -9,7 +9,7 @@
 *Exploring the universe of technology, one deployment at a time.*
 
 [![GitHub](https://img.shields.io/badge/GitHub-GowthamReddyT-181717?style=for-the-badge&logo=github)](https://github.com/GowthamReddyT)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/thotamadugula-gowtham-reddy/)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/gowthamreddyt/)
 
 </div>
 
